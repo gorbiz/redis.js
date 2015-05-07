@@ -19,7 +19,7 @@
     "url": "https://github.com/gorbiz/redis.js/issues"
   },
   "homepage": "https://github.com/gorbiz/redis.js",
-  "dependencies": {
-    "chai": "^2.3.0"
+  "devDependencies": {
+    "chai": "*"
   }
 }
