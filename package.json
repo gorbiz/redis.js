@@ -1,0 +1,25 @@
+{
+  "name": "redis.js",
+  "version": "0.0.1",
+  "description": "Redis written in JS, for learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gorbiz/redis.js.git"
+  },
+  "keywords": [
+    "redis"
+  ],
+  "author": "Karl Svartholm <gorbiz@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gorbiz/redis.js/issues"
+  },
+  "homepage": "https://github.com/gorbiz/redis.js",
+  "dependencies": {
+    "chai": "^2.3.0"
+  }
+}
