@@ -1,6 +1,6 @@
 {
   "name": "redis.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Redis written in JS, for learning",
   "main": "index.js",
   "scripts": {
