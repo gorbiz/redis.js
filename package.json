@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/gorbiz/redis.js",
   "devDependencies": {
-    "chai": "*"
+    "chai": "*",
+    "mocha": "*"
   }
 }
