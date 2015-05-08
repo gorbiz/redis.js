@@ -1,6 +1,6 @@
 var expect = require("chai").expect
   , should = require("chai").should
-  , redis = require("../lib").Redis;
+  , redis = require("../lib").Redis();
 
 describe("Redis", function() {
 

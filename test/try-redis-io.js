@@ -1,6 +1,6 @@
 var expect = require("chai").expect
   , should = require("chai").should
-  , redis = require("../lib").Redis;
+  , redis = require("../lib").Redis();
 
 describe("try.redis.io", function() {
   describe("parts", function() {
@@ -15,6 +15,14 @@ describe("try.redis.io", function() {
       expect(redis.incr("connections")).to.equal(12);
       redis.del("connections");
       expect(redis.incr("connections")).to.equal(1);
+    });
+
+    it("#3 - Atomic INCR");
+
+    it("#4 - EXPIRE & TTL", function() {
+      redis.set("resouce:lock", "Redis Demo");
+      redis.expire("resource:lock", 120);
+      // TODO complete test
     });
   });
 });
