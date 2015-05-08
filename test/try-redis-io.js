@@ -20,9 +20,19 @@ describe("try.redis.io", function() {
     it("#3 - Atomic INCR");
 
     it("#4 - EXPIRE & TTL", function() {
-      redis.set("resouce:lock", "Redis Demo");
+      redis.set("resource:lock", "Redis Demo");
       redis.expire("resource:lock", 120);
-      // TODO complete test
+      redis.debugTimetravel(7);
+      expect(redis.ttl("resource:lock")).to.equal(113);
+      redis.debugTimetravel(113);
+      expect(redis.ttl("resource:lock")).to.equal(-2);
+
+      redis.set("resource:lock", "Redis Demo 1");
+      redis.expire("resource:lock", 120);
+      redis.debugTimetravel(1);
+      expect(redis.ttl("resource:lock")).to.equal(119);
+      redis.set("resource:lock", "Redis Demo 2");
+      expect(redis.ttl("resource:lock")).to.equal(-1);
     });
   });
 });

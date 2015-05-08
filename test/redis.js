@@ -39,4 +39,9 @@ describe("Redis", function() {
   describe("#incr", function() {
     it("increments a number by 1");
   });
+
+  describe("#ttl", function() {
+    it("handels keys with no EXPIRE set");
+    it("GET past EXPIRE not possible");
+  });
 });
