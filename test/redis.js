@@ -15,6 +15,10 @@ describe("Redis", function() {
       expect(redis.set("server:name", "fido")).to.be.ok;
     });
 
+    it("has more tests?");
+  });
+
+  describe("#get", function() {
     it("a value set is gettable", function() {
       redis.set("server:name", "fido");
       expect(redis.get("server:name")).to.equal("fido");
@@ -26,5 +30,13 @@ describe("Redis", function() {
       expect(redis.get("server:name")).to.equal("fido");
       expect(redis.get("server:admin")).to.equal("slaygon");
     });
+
+    it("undefined keys are undefined", function() {
+      expect(redis.get("not-defined")).to.be.undefined;
+    });
+  });
+
+  describe("#incr", function() {
+    it("increments a number by 1");
   });
 });
