@@ -22,14 +22,14 @@ describe('try.redis.io', function() {
     it('4 - EXPIRE & TTL', function() {
       redis.set('resource:lock', 'Redis Demo');
       redis.expire('resource:lock', 120);
-      redis.debugTimetravel(7);
+      redis.debug.timetravel(7);
       expect(redis.ttl('resource:lock')).to.equal(113);
-      redis.debugTimetravel(113);
+      redis.debug.timetravel(113);
       expect(redis.ttl('resource:lock')).to.equal(-2);
 
       redis.set('resource:lock', 'Redis Demo 1');
       redis.expire('resource:lock', 120);
-      redis.debugTimetravel(1);
+      redis.debug.timetravel(1);
       expect(redis.ttl('resource:lock')).to.equal(119);
       redis.set('resource:lock', 'Redis Demo 2');
       expect(redis.ttl('resource:lock')).to.equal(-1);
