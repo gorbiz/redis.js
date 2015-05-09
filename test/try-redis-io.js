@@ -44,5 +44,14 @@ describe("try.redis.io", function() {
       expect(redis.lrange("friends", 0, 1)).to.deep.equal(["Sam", "Alice"]);
       expect(redis.lrange("friends", 1, 2)).to.deep.equal(["Alice", "Bob"]);
     });
+
+    it("#6 - LLEN, LPOP & RPOP", function() {
+      expect(redis.llen("friends")).to.equal(3);
+      expect(redis.lpop("friends")).to.equal("Sam");
+      expect(redis.rpop("friends")).to.equal("Bob");
+
+      expect(redis.llen("friends")).to.equal(1);
+      expect(redis.lrange("friends", 0, -1)).to.deep.equal(["Alice"]);
+    });
   });
 });
