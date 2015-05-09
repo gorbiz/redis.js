@@ -44,4 +44,9 @@ describe("Redis", function() {
     it("handels keys with no EXPIRE set");
     it("GET past EXPIRE not possible");
   });
+
+  describe("errors", function() {
+    it("SET friends Linus & RPUSH friends Pelle errors");
+    // (error) WRONGTYPE Operation against a key holding the wrong kind of value
+  });
 });
