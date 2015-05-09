@@ -34,5 +34,15 @@ describe("try.redis.io", function() {
       redis.set("resource:lock", "Redis Demo 2");
       expect(redis.ttl("resource:lock")).to.equal(-1);
     });
+
+    it("#5 Lists", function() {
+      redis.rpush("friends", "Alice");
+      redis.rpush("friends", "Bob");
+      redis.lpush("friends", "Sam");
+
+      expect(redis.lrange("friends", 0, -1)).to.deep.equal(["Sam", "Alice", "Bob"]);
+      expect(redis.lrange("friends", 0, 1)).to.deep.equal(["Sam", "Alice"]);
+      expect(redis.lrange("friends", 1, 2)).to.deep.equal(["Alice", "Bob"]);
+    });
   });
 });
