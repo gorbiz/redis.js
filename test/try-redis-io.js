@@ -53,5 +53,28 @@ describe('try.redis.io', function() {
       expect(redis.llen('friends')).to.equal(1);
       expect(redis.lrange('friends', 0, -1)).to.deep.equal(['Alice']);
     });
+
+    it('7 & 8 - SADD, SREM, SISMEMBER & SUNION', function() {
+      redis.sadd('superpowers', 'flight');
+      redis.sadd('superpowers', 'x-ray vision');
+      redis.sadd('superpowers', 'reflexes');
+
+      redis.srem('superpowers', 'reflexes');
+
+      // ---
+
+      expect(redis.sismember('superpowers', 'flight')).to.equal(1);
+      expect(redis.sismember('superpowers', 'reflexes')).to.equal(0);
+
+      expect(redis.smembers('superpowers')).to.deep.equal(['flight', 'x-ray vision']);
+
+      redis.sadd('birdpowers', 'pecking');
+      redis.sadd('birdpowers', 'flight');
+
+      expect(redis.sunion('superpowers', 'birdpowers')).to.have.length(3);
+      expect(redis.sunion('superpowers', 'birdpowers')).to.contain('pecking');
+      expect(redis.sunion('superpowers', 'birdpowers')).to.contain('flight');
+      expect(redis.sunion('superpowers', 'birdpowers')).to.contain('x-ray vision');
+    });
   });
 });
