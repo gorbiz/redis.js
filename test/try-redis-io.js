@@ -35,7 +35,7 @@ describe("try.redis.io", function() {
       expect(redis.ttl("resource:lock")).to.equal(-1);
     });
 
-    it("#5 Lists", function() {
+    it("#5 - RPUSH, LPUSH & LRANGE", function() {
       redis.rpush("friends", "Alice");
       redis.rpush("friends", "Bob");
       redis.lpush("friends", "Sam");
