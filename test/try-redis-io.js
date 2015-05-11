@@ -90,5 +90,21 @@ describe('try.redis.io', function() {
       expect(redis.zrange('hackers', 2, 4)).to.deep.equal(
           ['Claude Shannon', 'Alan Kay', 'Richard Stallman']);
     });
+
+    it('10 - HSET, HGETALL, HMSET & HGET - hashes', function() {
+      redis.hset('user:1000', 'name', 'John Smith');
+      redis.hset('user:1000', 'email', 'john.smith@example.com');
+      redis.hset('user:1000', 'password', 's3cret');
+
+      expect(redis.hgetall('user:1000')).to.deep.equal(
+          { name:     'John Smith'
+          , email:    'john.smith@example.com'
+          , password: 's3cret' });
+
+      redis.hmset('user:1001', 'name', 'Mary Jones', 'password', 'hidden',
+          'email', 'mjones@example.com');
+
+      expect(redis.hget('user:1001', 'name')).to.equal('Mary Jones');
+    });
   });
 });
