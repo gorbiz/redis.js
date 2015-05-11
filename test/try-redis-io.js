@@ -106,5 +106,13 @@ describe('try.redis.io', function() {
 
       expect(redis.hget('user:1001', 'name')).to.equal('Mary Jones');
     });
+
+    it('11 - HINCBY & HDEL - incrementing numericals hashes', function() {
+      redis.hset('user:1000', 'visits', 10);
+      expect(redis.hincrby('user:1000', 'visits', 1)).to.equal(11);
+      expect(redis.hincrby('user:1000', 'visits', 10)).to.equal(21);
+      redis.hdel('user:1000', 'visits');
+      expect(redis.hincrby('user:1000', 'visits', 1)).to.equal(1);
+    });
   });
 });
