@@ -76,5 +76,19 @@ describe('try.redis.io', function() {
       expect(redis.sunion('superpowers', 'birdpowers')).to.contain('flight');
       expect(redis.sunion('superpowers', 'birdpowers')).to.contain('x-ray vision');
     });
+
+    it('9 - ZADD & ZRANGE - sorted sets', function() {
+      redis.zadd('hackers', 1940, 'Alan Kay');
+      redis.zadd('hackers', 1906, 'Grace Hopper');
+      redis.zadd('hackers', 1953, 'Richard Stallman');
+      redis.zadd('hackers', 1965, 'Yukihiro Matsumoto');
+      redis.zadd('hackers', 1916, 'Claude Shannon');
+      redis.zadd('hackers', 1969, 'Linus Torvalds');
+      redis.zadd('hackers', 1957, 'Sophie Wilson');
+      redis.zadd('hackers', 1912, 'Alan Turing');
+
+      expect(redis.zrange('hackers', 2, 4)).to.deep.equal(
+          ['Claude Shannon', 'Alan Kay', 'Richard Stallman']);
+    });
   });
 });
